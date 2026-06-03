@@ -20,21 +20,19 @@ resource "aws_subnet" "public" {
 # Security Group
 resource "aws_security_group" "default" {
   name        = var.sg_name
-  description = "Default security group para acceso controlado"
+  description = "Default SG controlled access"
   vpc_id      = aws_vpc.main.id
 
-  # Ingress restringido a IPs seguras (no 0.0.0.0/0)
   ingress {
-    description = "SSH acceso limitado"
+    description = "Allow SSH inbound"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = var.allowed_ips
   }
 
-  # Egress restringido (ejemplo: solo HTTP/HTTPS)
   egress {
-    description = "Permitir solo tráfico web saliente"
+    description = "Allow HTTP outbound"
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
@@ -42,7 +40,7 @@ resource "aws_security_group" "default" {
   }
 
   egress {
-    description = "Permitir solo tráfico HTTPS saliente"
+    description = "Allow HTTPS outbound"
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
