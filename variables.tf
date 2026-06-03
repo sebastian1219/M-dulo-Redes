@@ -1,5 +1,5 @@
 variable "vpc_cidr" {
-  description = "CIDR block para la VPC"
+  description = "CIDR block de la VPC"
   type        = string
 }
 
@@ -9,21 +9,21 @@ variable "vpc_name" {
 }
 
 variable "public_subnets" {
-  description = "Lista de CIDR blocks para subnets públicas"
+  description = "Lista de subnets públicas"
   type        = list(string)
 }
 
 variable "azs" {
-  description = "Lista de zonas de disponibilidad"
+  description = "Availability Zones"
   type        = list(string)
 }
 
 variable "sg_name" {
-  description = "Nombre del security group"
+  description = "Nombre del Security Group"
   type        = string
 }
 
 variable "allowed_ips" {
-  description = "Lista de IPs permitidas para acceso SSH"
+  description = "Lista de IPs permitidas para acceso"
   type        = list(string)
 }
